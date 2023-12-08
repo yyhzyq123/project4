@@ -1,7 +1,7 @@
 
 # Data Scientist Capstone
 
-This `Data Scientist` capstone project explores the field of `Artifitial Intelligence`. Here, I would like to build a `Computer Vision` pipeline that can be used within a web or mobile app to process real-world, user-supplied images. In this project, given an image of a dog, the algorithm will identify and estimate the canine’s breed. If supplied an image of a human, the code will identify the resembling dog breed. My project blogpost can be found here.
+This `Data Scientist` capstone project explores the field of `Artifitial Intelligence`. Here, I would like to build a `Computer Vision` pipeline that can be used within a web or mobile app to process real-world, user-supplied images. In this project, given an image of a dog, the algorithm will identify and estimate the canine’s breed. If supplied an image of a human, the code will identify the resembling dog breed. My project blogpost can be found [here](https://github.com/yyhzyq123/project4).
 
 ## Dog Breed Classifier
 
