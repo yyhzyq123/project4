@@ -7,7 +7,7 @@ This `Data Scientist` capstone project explores the field of `Artifitial Intelli
 
 Use `Convolutional Neural Networks` to Identify Dog Breeds.
 
-The coding details of the project are at: [jupyter notebook.](https://github.com/preeti-chauhan/DSc-P04-Capstone-Dog-Breed-Classifier/blob/main/dog_app.ipynb)
+The coding details of the project are at: [jupyter notebook.](https://github.com/yyhzyq123/project4/blob/master/dog_app.ipynb)
 
 ### 1) Project Motivation
 
@@ -29,10 +29,5 @@ The coding details of the project are at: [jupyter notebook.](https://github.com
 
 ### Acknowledgements
 
-I would like to thank [Udacity](https://www.udacity.com/nanodegree?gclid=EAIaIQobChMI3bDV4t7i7wIV5IFbCh2m9AVLEAAYASAAEgIOyvD_BwE&utm_campaign=747168229_c&utm_keyword=udacity_e&utm_medium=ads_r&utm_source=gsem_brand&utm_term=39458666392) for providing great online learning resources and being part of my academic journey!
+I would like to thank [Udacity](https://learn.udacity.com/nanodegrees/nd025) for providing great online learning resources and being part of my academic journey!
 
-
-
-### References
-
-- [Udacity Artificial Intelligence Nano Degree Project: Dog Breed Classifier using CNN](https://github.com/preeti-chauhan/DSc-P04-Capstone-Dog-Breed-Classifier/blob/main/README_CNN_AI.md)
