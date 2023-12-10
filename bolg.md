@@ -1,135 +1,177 @@
 # Dog Recognition Based On Convolutional Neural Networks And Transfer Learning
 
-## Introduction
+## High-Level Overview
 
-This project aims to use convolutional neural networks and transfer learning to solve the problem of puppy recognition. Next, the following aspects will be explained:
+* As the last project in UDACITY Data Science, the goal of this project is to classify dog images based on their breed,
+* Solving the issue of dog breed classification may also help some dog houses determine the type of dog
+* If you are learning about convolutional neural networks or transfer learning, I believe this blog will be of great help to you.
+* If you are interested in learning about artificial intelligence, reading this blog will be a great choice for you
 
-1. [Project Overview](#Project Overview)
-2. [Environmental Introduction](#Environmental Introduction)
-3. [Data Download And Processing](#Data Download And Processing)
-4. [Building a Convolutional Neural Network Model](#Building a Convolutional Neural Network Model)
-5. [Model Training](#Model Training)
-6. [Model Evaluation](#Model Evaluation)
-7. [Transfer Learning](#Transfer Learning)
-8. [Model Testing](#Model Testing)
-9. [Summarize](#Summarize)
+## Description of Input Data
 
-## 1.Project Overview
-
-### 1.1BACKGROUND
-
-This project is a task from the UDACITY Data Scientist Capstone project - dog recognition using convolutional neural networks. There are many types of puppies, and this project is used to identify whether the image is a puppy. If it is recognized as a dog, it is written as a dog. If it is recognized as a human, it will determine which breed of dog the person is imagining. If it is recognized as neither a human nor a dog, it will return No. Due to the high cost of training neural networks, we adopt transfer learning to reduce costs.
-
-### 1.2Project data source
-
-The data is sourced from all the images provided by Udacity, and the images have been separated into training, validation, and testing sets for our convenience. We would like to thank Udacity for providing the dataset
-
-## 2.Environmental Introduction
-
-Firstly, the environment is Anaconda and the following software packages are installed:
-
-* opencv
-* keras
-* jupyter
-* scikit-learn
-* pandas
-* matplotlib
-
-The above are the main software packages, and the specific ones will not be introduced here
-
-## 3.Data Download And Processing
-
-* The data comes from Udacity, we download the data and import it
-* The quantity of discovered data is shown in the following figure
+* Data is the core of a project, and the quality of the data will determine the quality of the model
+* The dataset for this project consists of over 8320 images, provided by UDACITY. The dataset is divided into training set data of 6680 images, validation set of 835 images, and test set of 836 images. The dataset is very suitable for use and meets the requirement of training set: validation set: test set=8:1:1.
+* This project also has some model data, including pre trained model data for VGG-16 and pre trained model data for Resnet50, which will become the main data for this project
 
 <img src='./image/1.png'>
 
-* However, during subsequent data import, it was found that due to time and device limitations, the train could only be changed from 6680 images to 2000 images for ease of use, as shown in the following figure
 
-<img src='./image/2.png'>
 
-* Finally, compress the image for future use, as shown in the following image
+## Strategy For Solving The Problem
+
+* To identify and classify dog breeds, this article will use three models to solve this problem. The models will be introduced later, and now we will introduce convolutional neural networks
+
+### Convolutional Neural Network
+
+* CNN is a deep structured feedforward neural network that includes convolutional operations and is widely used in fields such as image recognition and natural language processing
+
+* CNN generally includes 5 network structures, namely
+
+  1. Input layer
+     * The original input of a convolutional network can be either the original or processed pixel matrix
+
+  2. Convolutional layer
+     * It is the core layer of convolutional neural networks, with parameter sharing, local connections, and the use of translation invariance to extract local features from global features
+
+  3. active layer
+     * Nonlinear mapping of the output results of convolutional layers
+
+  4. Pooling layer
+     * Effectively reducing the number of parameters required for subsequent network layers
+
+  5. Fully connected layer
+     * Flatten multi-dimensional features into two-dimensional features, usually with low dimensional features corresponding to the learning objectives of the task
+
+* As this project revolves around convolutional neural network models, the above is an introduction to convolutional neural network models
+
+## Discussion Of The Expected Solution
+
+* This project adopts the construction, training, and evaluation of three models to compare them, and finally uses the best model among the three models as the final model of this project to identify and classify dog breeds
+* Use the OpenCV module to process images, use the Kreas module to build various convolutional neural networks, and use the sklearn and numpy modules for model evaluation to obtain the final model results. Finally, upload images for dog breed recognition
+
+## Metrics With Justification
+
+* The model evaluation method used in this project is to compare the predicted types with the actual types, in order to obtain accuracy and judge the quality of the model.
+
+## Data Preprocessing
+
+* This project only performed one data processing, which is to compress the image. The method is to scale the image by 255 pixels per pixel and import it as shown in the following figure
 
 <img src='./image/3.png'>
 
 <img src='./image/4.png'>
 
-* After compression is completed and imported, data processing ends
 
 
 
-## 4.Building a Convolutional Neural Network Model
 
-* Next, we will start building a relatively simple convolutional neural network to see the recognition effect. The content of the network model is shown in the following figure
+## Modeling
+
+* This project uses a total of three models introduced above to solve recognition problems
+
+### Model 1: A simple convolutional neural network built by oneself
+
+* The self built convolutional neural network consists of three convolutional layers, three pooling layers, and an unfolding layer, as shown in the following figure
 
 <img src='./image/5.png'>
 
-* When we use the Keras module and some methods to construct something similar to the one shown in the above figure, we can start model training
+* Build your own convolutional neural network model using the Keras module, with the following code:
 
-## 5.Model Training
+* ```python
+  from keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
+  from keras.layers import Dropout, Flatten, Dense
+  from keras.models import Sequential
+  
+  model = Sequential()
+  
+  ### TODO: Define your architecture.
+  model.add(Conv2D(filters=16, kernel_size=2, padding='same', activation='relu', 
+                          input_shape=(224,224,3)))
+  model.add(MaxPooling2D(pool_size=2))
+  
+  model.add(Conv2D(filters=32, kernel_size=2, padding='same', activation='relu'))
+  model.add(MaxPooling2D(pool_size=2))
+  
+  model.add(Conv2D(filters=64, kernel_size=2, padding='same', activation='relu'))
+  model.add(MaxPooling2D(pool_size=2))
+            
+  model.add(Flatten())
+  model.add(Dense(133, activation='softmax'))
+  
+  model.summary()
+  ```
 
-* When our model is ready, let's set some simple parameters, such as epochs and batch_ After waiting for the size, you can use the fit method for model training. The training process is shown in the following figure
+  
 
-<img src='./image/6.png'>
+### Model 2: Convolutional Neural Network for VGG-16
 
-## 6.Model Evaluation
-
-* After training the model, it is important to take a look at what kind of model we are training. Accuracy can be used to determine the results, as shown in the following figure
-
-<img src='./image/7.png'>
-
-* From the above figure, it can be seen that the performance of the simple convolutional neural network built by oneself is not very good, or it can be said to be very poor. The training of complex convolutional neural networks requires a lot of time and excellent equipment, which we cannot achieve. However, the recognition function also needs to be implemented. Therefore, in the future, we will use transfer learning methods to help us complete this project
-
-## 7.Transfer Learning
-
-* Transfer learning is actually the process of pre training a model that has been trained by others. If the purpose of training a model by others is similar to one's own, then the pre trained model trained by others can also be used. You can also add your own convolutional neural network after someone else's pre trained model.
-
-### Using pre trained models to build convolutional neural networks
-
-#### 1.Building Convolutional Neural Networks Using VGG-16 and Training and Evaluation
-
-* The structure of building the model is shown in the following figure
+* Train and predict data using the pre trained model VGG-16 convolutional neural network, with the network structure shown in the following figure
 
 <img src='./image/8.png'>
 
-* Train the model built using VGG-16, as shown in the following figure
+### Model 3: Resnet-50 Convolutional Neural Network
 
-<img src='./image/9.png'>
-
-* Evaluate the VGG-16 model trained by oneself and find that the performance is much better than the model without pre training, as shown in the following figure
-
-<img src='./image/10.png'>
-
-* But the effect is still not good enough, with an accuracy of only about 0.43, so we will use a more complex pre training model
-
-#### 2.Building Convolutional Neural Networks Using Resnet50 and Training and Evaluation
-
-* The structure of the convolutional neural network model using Resnet50 is shown in the following figure
+* Train and predict data using the pre trained Resnet-50 convolutional neural network model, with the network structure shown in the following figure:
 
 <img src='./image/11.png'>
 
-* Train the Resnet50 model using the same basic parameters, as shown in the following figure
+## Hyperparameter Tuning
+
+* This project did not use hyperparameter adjustment techniques, but directly used the parameters in the fit method of the model and adjusted epochs and batch_ These two parameters, size, are used for model control. Due to time and equipment reasons, I have adopted epochs of 30 and batch_ Train the model with a size of 4
+
+
+
+
+
+## Modeling Training
+
+* The above three models are trained separately, and the fit method is used to train the models. The training process of the three models is shown in the following figure:
+
+<img src='./image/6.png'>
+
+<img src='./image/9.png'>
 
 <img src='./image/12.png'>
 
-* Evaluate the trained Resnet50 model as shown in the following figure
+
+
+## Results
+
+* The effectiveness of the three models is measured by the accuracy mentioned above. The higher the accuracy, the better the model's performance. The accuracy of the three models is shown in the following figure
+* Build a simple convolutional neural network on your own
+
+<img src='./image/7.png'>
+
+* VGG-16 Convolutional Neural Network
+
+<img src='./image/10.png'>
+
+* Resnet-50 Convolutional Neural Network
 
 <img src='./image/13.png'>
 
-* It can be seen that there is still a significant difference in performance compared to VGG-16 and models without pre trained models. Finally, we used the Resnet50 model for model training to see if the test results met our expectations
-
-## 8.Model Testing
-
-* Let's write a test function to return what we want, whether the recognized object is a dog, and if it is a human, what kind of dog it is like, or if it is neither a human nor a dog, as shown in the following figure
+* From this result, it can be seen that the Resnet-50 convolutional neural network has a good performance and can achieve the results of this project
+* This project conducts model testing on the Resnet-50 trained model
+* Two images will be input for the model to recognize, and the results are shown in the following figure
 
 <img src='./image/14.png'>
 
+
+
 <img src='./image/15.png'>
 
-* From the above figure, it can be inferred that the model can basically recognize images of dogs and provide a judgment
+* From the recognition results, it can be seen that the model can basically achieve its functions
 
-## 9.Summarize
+## Conclusion
 
-* Firstly, we can also build our own convolutional neural network model to solve practical problems, but due to time and equipment constraints, the results of our own model training generally do not meet our expectations
-* So we use transfer learning methods to solve such problems, and the results are still good
-* Finally, for me, there is a lot of knowledge about big data, and it can solve many problems in life. Let's learn about big data/artificial intelligence together
+* This project used a total of three models to classify dog breeds. It was found that the convolutional neural network built by oneself was not effective due to its simplicity. Using transfer learning pre training models for training resulted in much better results. Finally, this project used the Resnet-50 model to predict dog breeds
+
+## Improvements
+
+* Due to time and equipment issues, this project is unable to train and compare other models. You can try other pre trained models, and if possible, you can also build a more complex convolutional neural network model yourself to try
+* At the same time, the dataset can also be expanded to better process the data and obtain better models
+
+## Acknowledgment
+
+* Thank you UDACITY for providing me with the dataset and ideas. Thank you very much
+* This project can be used for learning, not for trading. Everyone can also learn from any field or method they are interested in, in order to become stronger
