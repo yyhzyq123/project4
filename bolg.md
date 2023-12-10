@@ -13,7 +13,7 @@
 * The dataset for this project consists of over 8320 images, provided by UDACITY. The dataset is divided into training set data of 6680 images, validation set of 835 images, and test set of 836 images. The dataset is very suitable for use and meets the requirement of training set: validation set: test set=8:1:1.
 * This project also has some model data, including pre trained model data for VGG-16 and pre trained model data for Resnet50, which will become the main data for this project
 
-<img src='./image/1.png'>
+<img src='C:\Users\12646\project4\image/1.png'>
 
 * 代码片段如下
 
@@ -66,9 +66,9 @@ print('There are %d test dog images.'% len(test_files))
 
 * This project only performed one data processing, which is to compress the image. The method is to scale the image by 255 pixels per pixel and import it as shown in the following figure
 
-<img src='./image/3.png'>
+<img src='C:\Users\12646\project4\image/3.png'>
 
-<img src='./image/4.png'>
+<img src='C:\Users\12646\project4\image/4.png'>
 
 
 
@@ -82,7 +82,7 @@ print('There are %d test dog images.'% len(test_files))
 
 * The self built convolutional neural network consists of three convolutional layers, three pooling layers, and an unfolding layer, as shown in the following figure
 
-<img src='./image/5.png'>
+<img src='C:\Users\12646\project4\image/5.png'>
 
 * Build your own convolutional neural network model using the Keras module, with the following code:
 
@@ -116,13 +116,13 @@ print('There are %d test dog images.'% len(test_files))
 
 * Train and predict data using the pre trained model VGG-16 convolutional neural network, with the network structure shown in the following figure
 
-<img src='./image/8.png'>
+<img src='C:\Users\12646\project4\image/8.png'>
 
 ### Model 3: Resnet-50 Convolutional Neural Network
 
 * Train and predict data using the pre trained Resnet-50 convolutional neural network model, with the network structure shown in the following figure:
 
-<img src='./image/11.png'>
+<img src='C:\Users\12646\project4\image/11.png'>
 
 ## Hyperparameter Tuning
 
@@ -136,11 +136,11 @@ print('There are %d test dog images.'% len(test_files))
 
 * The above three models are trained separately, and the fit method is used to train the models. The training process of the three models is shown in the following figure:
 
-<img src='./image/6.png'>
+<img src='C:\Users\12646\project4\image/6.png'>
 
-<img src='./image/9.png'>
+<img src='C:\Users\12646\project4\image/9.png'>
 
-<img src='./image/12.png'>
+<img src='C:\Users\12646\project4\image/12.png'>
 
 
 
@@ -149,25 +149,25 @@ print('There are %d test dog images.'% len(test_files))
 * The effectiveness of the three models is measured by the accuracy mentioned above. The higher the accuracy, the better the model's performance. The accuracy of the three models is shown in the following figure
 * Build a simple convolutional neural network on your own
 
-<img src='./image/7.png'>
+<img src='C:\Users\12646\project4\image/7.png'>
 
 * VGG-16 Convolutional Neural Network
 
-<img src='./image/10.png'>
+<img src='C:\Users\12646\project4\image/10.png'>
 
 * Resnet-50 Convolutional Neural Network
 
-<img src='./image/13.png'>
+<img src='C:\Users\12646\project4\image/13.png'>
 
 * From this result, it can be seen that the Resnet-50 convolutional neural network has a good performance and can achieve the results of this project
 * This project conducts model testing on the Resnet-50 trained model
 * Two images will be input for the model to recognize, and the results are shown in the following figure
 
-<img src='./image/14.png'>
+<img src='C:\Users\12646\project4\image/14.png'>
 
 
 
-<img src='./image/15.png'>
+<img src='C:\Users\12646\project4\image/15.png'>
 
 * From the recognition results, it can be seen that the model can basically achieve its functions
 
