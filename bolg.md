@@ -15,6 +15,15 @@
 
 <img src='./image/1.png'>
 
+* 代码片段如下
+
+```python
+print('There are %s total dog images.\n' % len(np.hstack([train_files, valid_files, test_files])))
+print('There are %d training dog images.' % len(train_files))
+print('There are %d validation dog images.' % len(valid_files))
+print('There are %d test dog images.'% len(test_files))
+```
+
 
 
 ## Strategy For Solving The Problem
@@ -174,4 +183,5 @@
 ## Acknowledgment
 
 * Thank you UDACITY for providing me with the dataset and ideas. Thank you very much
+* Thank you very much to those who provided pre trained models
 * This project can be used for learning, not for trading. Everyone can also learn from any field or method they are interested in, in order to become stronger
