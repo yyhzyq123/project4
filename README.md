@@ -13,6 +13,18 @@ The coding details of the project are at: [jupyter notebook.](https://github.com
 
 ### 2) Libraries Used
 
+The following python libraries were used in this project
+
+* opencv-python==3.2.0.6
+* h5py==2.6.0
+* matplotlib==2.0.0
+* numpy==1.12.0
+* scipu==0.18.1
+* tqdm==4.11.2
+* keras==2.0.2
+* skikit-learn==0.18.1
+* pillow==4.0.0
+
 ### 3) Datasets Used
 
 - Download the [dog dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip).  Unzip the folder and place it in the repo at location `path/to/dog-project/dog_images`. 
@@ -25,7 +37,15 @@ The coding details of the project are at: [jupyter notebook.](https://github.com
 
 ### 4) File Descriptions
 
+* dog_app.ipynb:coded file
+* image：Blog Image Folder
+* image_dog:Test image folder
+* saved_models:Model save file
+* bolg.md:Blog files
+
 ### 5) Results Analysis
+
+* Basic implementation of recognition function and successful testing
 
 ### Acknowledgements
 

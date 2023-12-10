@@ -62,6 +62,14 @@ print('There are %d test dog images.'% len(test_files))
 
 * The model evaluation method used in this project is to compare the predicted types with the actual types, in order to obtain accuracy and judge the quality of the model.
 
+## EDA
+
+* 在这步，已经无足轻重了，因为Udacity已经提供了133个品种的1.08G的犬类图像，并且将这些图像放在了适当的文件之中
+* 其实，世界上犬种远超133种，但是对于我们这个项目而言133种已经足够用了
+* 
+
+
+
 ## Data Preprocessing
 
 * This project only performed one data processing, which is to compress the image. The method is to scale the image by 255 pixels per pixel and import it as shown in the following figure
@@ -70,7 +78,9 @@ print('There are %d test dog images.'% len(test_files))
 
 <img src='https://github.com/yyhzyq123/project4/blob/master/image/4.png'>
 
-
+* This project takes the file path of color images as input and adjusts them to a square image with 224 * 244 pixels, then converts it into an array. As the processed image is color, the shape of the tensor is (number of images, 224244,3)
+* This project also converts RGB to BGR images by reordering channels, and normalizes all images
+* There may be slight data imbalance issues, but the problem is not very serious and can be almost negligible，After inspection, it was found that there were no issues with damaged images or changes in lighting conditions
 
 
 
@@ -126,11 +136,14 @@ print('There are %d test dog images.'% len(test_files))
 
 ## Hyperparameter Tuning
 
-* This project did not use hyperparameter adjustment techniques, but directly used the parameters in the fit method of the model and adjusted epochs and batch_ These two parameters, size, are used for model control. Due to time and equipment reasons, I have adopted epochs of 30 and batch_ Train the model with a size of 4
+* This project did not use hyperparameter adjustment techniques, but directly used parameters from the model fitting method and adjusted epochs and batches_ These two parameters, size, are used for model control. After trying all the parameters myself, I found that based on the current conditions, the best parameter is an epoch of 30 and batches_ A size of 8 can serve as a hyperparameter for three models
+* Change the loss function to a logarithmic loss function and the optimizer to rmsprop to improve the model. The following is the improvement code,
 
+```python
+Resnet50_model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+```
 
-
-
+* And L2 norm regularization was added, which penalizes networks with excessively high individual parameter weights and is more generalized during training to avoid overfitting
 
 ## Modeling Training
 
