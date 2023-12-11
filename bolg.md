@@ -15,7 +15,7 @@
 
 <img src='https://github.com/yyhzyq123/project4/blob/master/image/1.png'>
 
-* 代码片段如下
+* The code snippet is as follows
 
 ```python
 print('There are %s total dog images.\n' % len(np.hstack([train_files, valid_files, test_files])))
