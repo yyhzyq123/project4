@@ -64,11 +64,20 @@ print('There are %d test dog images.'% len(test_files))
 
 ## EDA
 
-* 在这步，已经无足轻重了，因为Udacity已经提供了133个品种的1.08G的犬类图像，并且将这些图像放在了适当的文件之中
-* 其实，世界上犬种远超133种，但是对于我们这个项目而言133种已经足够用了
-* 
+* At this point, it is no longer of much importance as Udacity has provided 1.08G dog images for 133 breeds and has placed these images in appropriate files
+* In fact, there are far more than 133 dog breeds in the world, but for our project, 133 breeds are already sufficient
+* Draw a category distribution pie chart for 6680 image data, and the chart and partial code are as follows
 
+```python
+import matplotlib.pyplot as plt
+plt.figsize=((100,100))
+plt.pie(a)
+plt.show()
+```
 
+<img src='https://github.com/yyhzyq123/project4/blob/master/image/16.png'>
+
+* From the graph, it can be seen that the images of 133 dog breeds are generally between 50-70, and there is no problem of imbalanced samples. The dataset is basically usable
 
 ## Data Preprocessing
 
